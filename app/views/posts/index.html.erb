@@ -1,0 +1,6 @@
+投稿一覧<br>
+<% @posts.each do |post| %>
+    <div class="posts-index-item">
+        <%= link_to(post.title, "#{post.id}") %><br>
+    </div>
+<% end %>

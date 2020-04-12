@@ -1,0 +1,25 @@
+<div class = "container">
+    <h1 class = "form-heading">投稿する</h1>
+    <%= form_tag("/posts/create") do %>
+        <div class = "form">
+            タイトル：<input type="text" name="title" required><br>
+            日時：<input type="datetime-local" name="datetime" required><br>
+            場所：<input type="text" name="site" required><br>
+            コメント：<textarea name="comment" rows="4" cols="40" required></textarea><br>
+            評価：
+            <div class="evaluation">
+                <input id="star1" type="radio" name="assess" value="5" required/>
+                <label for="star1"><span class="text"></span>★</label>
+                <input id="star2" type="radio" name="assess" value="4" />
+                <label for="star2"><span class="text"></span>★</label>
+                <input id="star3" type="radio" name="assess" value="3" />
+                <label for="star3"><span class="text"></span>★</label>
+                <input id="star4" type="radio" name="assess" value="2" />
+                <label for="star4"><span class="text"></span>★</label>
+                <input id="star5" type="radio" name="assess" value="1" />
+                <label for="star5"><span class="text"></span>★</label>
+            </div>
+            <input type="submit" value="投稿"><input type="reset" value="リセット">
+        </div>
+    <%end%>
+</div>
