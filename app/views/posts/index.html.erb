@@ -1,6 +1,13 @@
-投稿一覧<br>
-<% @posts.each do |post| %>
-    <div class="posts-index-item">
-        <%= link_to(post.title, "#{post.id}") %><br>
-    </div>
-<% end %>
+<div class="container">
+    <h4 class="index-headline">投稿一覧</h4>
+    <% @posts.each do |post| %>
+        <div class="posts-index-item">
+            <%= link_to "#{post.id}", class:"card" do %>
+                <h4><%=post.title%></h4>
+                <p><%=post.site%></p>
+                <p><%=post.assess%></p>
+                <p><%=post.datetime.strftime("%Y年%m月%d日%H時%M分")%></p>
+            <% end %>
+        </div>
+    <% end %>
+</div>

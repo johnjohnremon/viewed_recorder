@@ -1,3 +1,53 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+html {
+    font-size: 12px;
+}
+
+@media only screen and (min-width:651px) {
+    html {
+      font-size: 14px;
+    }
+}
+
+@media only screen and (min-width:961px) {
+    html {
+      font-size: 16px;
+    }
+}
+
+p{
+    margin-bottom: 8px !important;
+}
+
+.header {
+    background-color: rgba(180, 180, 180, 0.95) !important;
+    display: flex;
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
+}
+
+.header-logo {
+    padding: 8px 8px;
+}
+
+.header .container{
+    display: flex;
+}
+
+.header-list{
+    display: flex;
+    list-style: none;
+    padding-left: 20px !important;
+}
+
+.header-list li{
+    font-size: 1.125rem;
+    padding: 0px 15px;
+}
+
+body{
+    font-size: 1.25rem;
+}
