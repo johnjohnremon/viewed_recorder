@@ -2,6 +2,13 @@
     <p>タイトル：<%= @post.title %></p>
     <p>場所：<%= @post.site %></p>
     <p>コメント：<%= @post.comment %></p>
-    <p>評価：<%= @post.assess %></p>
+    <p>評価：
+        <div class="evaluation">
+            <% for i in 1..5 do %>
+                <input id=<%="star" + i.to_s%> type="radio" name="assess" <% if (5-i+1)==@post.assess then%>checked="checked"<% end %> value=<%=(5-i+1).to_s%> disabled/>
+                <label for=<%="star" + i.to_s%>><span class="text"></span>★</label>
+            <% end %>
+        </div>
+    </p>
     <p>日時：<%= @post.datetime.strftime("%Y年%m月%d日%H時%M分") %></p>
 </div>

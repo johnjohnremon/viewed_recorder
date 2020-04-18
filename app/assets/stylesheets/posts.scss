@@ -21,6 +21,12 @@ h4{
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
+  color: black;
+}
+
+.card:hover{
+  background-color: rgb(220, 220, 220);
+  text-decoration: none;
 }
 
 .evaluation{
@@ -47,8 +53,21 @@ h4{
     font-size: 1rem;
     color: gray;
   }
-  .evaluation label:hover,
-  .evaluation label:hover ~ label,
+
+  label{
+    padding-top: 0px !important;
+  }
+
+  .assessment label:hover,
+  .assessment label:hover ~ label,
   .evaluation input[type='radio']:checked ~ label{
     color: #ffcc00;
+  }
+
+  .posts-item{
+    margin-top: 20px;
+  }
+
+  .posts-index-item .datetime{
+    text-align: right;
   }
