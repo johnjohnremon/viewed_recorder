@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(datetime: :desc)
+    sort = "datetime"
+    order = "desc"
+    if params[:sort] && params[:order] then
+      sort = params[:sort]
+      order = params[:order]
+    end
+    @posts = Post.all.order("#{sort} #{order}")
   end
 
   def new
@@ -10,6 +16,22 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(title: params[:title], datetime: params[:datetime], site: params[:site], comment: params[:comment], assess: params[:assess].to_i)
     @post.save
+    redirect_to("/posts/index")
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def editsave
+    @post = Post.find_by(id: params[:id])
+    @post.update_attributes(title: params[:title], datetime: params[:datetime], site: params[:site], comment: params[:comment], assess: params[:assess].to_i)
+    redirect_to("/posts/index")
+  end
+
+  def delete
+    @post = Post.find_by(id: params[:id])
+    @post.delete
     redirect_to("/posts/index")
   end
 

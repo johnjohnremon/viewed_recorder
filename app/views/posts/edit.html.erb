@@ -1,0 +1,20 @@
+<div class = "container">
+    <h4 class = "form-heading">編集する</h4>
+    <%= form_tag("/posts/#{@post.id}/editsave") do %>
+        <div class = "form">
+            <p>タイトル：<input type="text" name="title" value=<%= @post.title %> required></p>
+            <p>日時：<input type="datetime-local" name="datetime" value=<%= @post.datetime.strftime("%Y-%m-%dT%H:%M") %> required></p>
+            <p>場所：<input type="text" name="site" value=<%= @post.site %> required></p>
+            <p>コメント：<textarea name="comment" rows="4" cols="40" required><%= @post.comment.to_s %></textarea></p>
+            <p>評価：
+                <div class="evaluation assessment">
+                    <% for i in 1..5 do %>
+                        <input id=<%="star" + i.to_s%> type="radio" name="assess" <% if (5-i+1)==@post.assess then%>checked="checked"<% end %> value=<%=(5-i+1).to_s%> required/>
+                        <label for=<%="star" + i.to_s%>><span class="text"></span>★</label>
+                    <% end %>
+                </div>
+            </p>
+            <input type="submit" value="投稿"><input type="reset" value="リセット">
+        </div>
+    <%end%>
+</div>

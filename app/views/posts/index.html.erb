@@ -1,4 +1,27 @@
 <div class="container">
+    <div class="option">
+        <%= form_tag("/posts/index") do %>
+            <div class = "form">
+                <div class="sort">
+                    <h5>ソート</h5>
+                    <div class="sort_option">
+                        <p>表示順：</p>
+                        <p><input type="radio" name="sort" value="title" required/>タイトル</p>
+                        <p><input type="radio" name="sort" value="datetime" checked/>日時</p>
+                        <p><input type="radio" name="sort" value="site" />場所</p>
+                        <p><input type="radio" name="sort" value="assess" />評価</p>
+                    </div>
+                    <div class="sort_order">
+                        <p>並び順：</p>
+                        <p><input type="radio" name="order" value="asc" required/>昇順</p>
+                        <p><input type="radio" name="order" value="desc" checked/>降順</p>
+                    </div>
+                </div>
+                <input type="submit" value="適用">
+            </div>
+        <%end%>
+    </div>
+
     <h4 class="index-headline">投稿一覧</h4>
     <% @posts.each do |post| %>
         <div class="posts-index-item">
