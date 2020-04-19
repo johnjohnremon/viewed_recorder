@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   def index
-    sort = "datetime"
-    order = "desc"
+    @sort = "datetime"
+    @order = "desc"
     if params[:sort] && params[:order] then
-      sort = params[:sort]
-      order = params[:order]
+      @sort = params[:sort]
+      @order = params[:order]
     end
-    @posts = Post.all.order("#{sort} #{order}")
+    @posts = Post.all.order("#{@sort} #{@order}")
   end
 
   def new

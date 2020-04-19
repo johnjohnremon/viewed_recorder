@@ -6,15 +6,15 @@
                     <h5>ソート</h5>
                     <div class="sort_option">
                         <p>表示順：</p>
-                        <p><input type="radio" name="sort" value="title" required/>タイトル</p>
-                        <p><input type="radio" name="sort" value="datetime" checked/>日時</p>
-                        <p><input type="radio" name="sort" value="site" />場所</p>
-                        <p><input type="radio" name="sort" value="assess" />評価</p>
+                        <p><input type="radio" name="sort" value="title" <%if @sort == "title" then%>checked<%end%> required/>タイトル</p>
+                        <p><input type="radio" name="sort" value="datetime" <%if @sort == "datetime" then%>checked<%end%>/>日時</p>
+                        <p><input type="radio" name="sort" value="site" <%if @sort == "site" then%>checked<%end%>/>場所</p>
+                        <p><input type="radio" name="sort" value="assess" <%if @sort == "assess" then%>checked<%end%>/>評価</p>
                     </div>
                     <div class="sort_order">
                         <p>並び順：</p>
-                        <p><input type="radio" name="order" value="asc" required/>昇順</p>
-                        <p><input type="radio" name="order" value="desc" checked/>降順</p>
+                        <p><input type="radio" name="order" value="asc" <%if @order == "asc" then%>checked<%end%> required/>昇順</p>
+                        <p><input type="radio" name="order" value="desc" <%if @order == "desc" then%>checked<%end%>/>降順</p>
                     </div>
                 </div>
                 <input type="submit" value="適用">
