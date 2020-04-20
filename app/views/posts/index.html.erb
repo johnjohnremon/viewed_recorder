@@ -1,21 +1,34 @@
 <div class="container">
     <div class="option">
         <%= form_tag("/posts/index") do %>
-            <div class = "form">
-                <div class="sort">
-                    <h5>ソート</h5>
-                    <div class="sort_option">
-                        <p>表示順：</p>
-                        <p><input type="radio" name="sort" value="title" <%if @sort == "title" then%>checked<%end%> required/>タイトル</p>
-                        <p><input type="radio" name="sort" value="datetime" <%if @sort == "datetime" then%>checked<%end%>/>日時</p>
-                        <p><input type="radio" name="sort" value="site" <%if @sort == "site" then%>checked<%end%>/>場所</p>
-                        <p><input type="radio" name="sort" value="assess" <%if @sort == "assess" then%>checked<%end%>/>評価</p>
-                    </div>
-                    <div class="sort_order">
-                        <p>並び順：</p>
-                        <p><input type="radio" name="order" value="asc" <%if @order == "asc" then%>checked<%end%> required/>昇順</p>
-                        <p><input type="radio" name="order" value="desc" <%if @order == "desc" then%>checked<%end%>/>降順</p>
-                    </div>
+            <div class="sort">
+                <h5>ソート</h5>
+                <div class="sort_option">
+                    <p>表示順：</p>
+                    <p><input type="radio" name="sort" value="title" <%if @sort == "title" then%>checked<%end%> required/>タイトル</p>
+                    <p><input type="radio" name="sort" value="datetime" <%if @sort == "datetime" then%>checked<%end%>/>日時</p>
+                    <p><input type="radio" name="sort" value="site" <%if @sort == "site" then%>checked<%end%>/>場所</p>
+                    <p><input type="radio" name="sort" value="assess" <%if @sort == "assess" then%>checked<%end%>/>評価</p>
+                </div>
+                <div class="sort_order">
+                    <p>並び順：</p>
+                    <p><input type="radio" name="order" value="asc" <%if @order == "asc" then%>checked<%end%> required/>昇順</p>
+                    <p><input type="radio" name="order" value="desc" <%if @order == "desc" then%>checked<%end%>/>降順</p>
+                </div>
+                <input type="submit" value="適用">
+            </div>
+        <%end%>
+        <%= form_tag("/posts/index") do %>
+            <div class="filter">
+                <h5>絞り込み</h5>
+                <div class="filter_option">
+                    <p>項目：</p>
+                    <p><input type="radio" name="filter" value="title" <%if @filter == "title" then%>checked<%end%> required/>タイトル</p>
+                    <p><input type="radio" name="filter" value="site" <%if @filter == "site" then%>checked<%end%>/>場所</p>
+                    <p><input type="radio" name="filter" value="assess" <%if @filter == "assess" then%>checked<%end%>/>評価</p>
+                </div>
+                <div class="filter_keyword">
+                    <p>キーワード：<input type="text" name="keyword" <%if @keyword then%>value=<%=@keyword%><%end%> required></p>
                 </div>
                 <input type="submit" value="適用">
             </div>

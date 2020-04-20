@@ -1,12 +1,23 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.option{
+  display: flex;
+}
 
+.filter{
+  margin-left: 30px;
+}
+
+.filter_option,
+.filter_keyword,
 .sort_option,
 .sort_order{
   display: flex;
 }
 
+.filter_option p,
+.filter_keyword p,
 .sort_option p,
 .sort_order p{
   margin-right: 10px;

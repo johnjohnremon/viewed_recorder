@@ -6,7 +6,20 @@ class PostsController < ApplicationController
       @sort = params[:sort]
       @order = params[:order]
     end
+
     @posts = Post.all.order("#{@sort} #{@order}")
+
+    if params[:filter] && params[:keyword] then
+      @filter = params[:filter]
+      @keyword = params[:keyword]
+      if params[:filter] == "assess" && @keyword =~ /^[0-9]+$/ then
+        @posts = Post.where("#{@filter} = ?", @keyword.to_i)
+      else
+        @posts = Post.where("#{@filter} = ?", @keyword)
+      end
+      @posts = @posts.order("#{@sort} #{@order}")
+    end
+    
   end
 
   def new
