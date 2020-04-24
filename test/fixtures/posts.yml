@@ -1,7 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
+  title: MyTitle
+  datetime: 2000-01-01 00:00:00
 
 two:
-  content: MyText
+  title: MyTitle
+  datetime: 2020-01-01 00:00:00
+

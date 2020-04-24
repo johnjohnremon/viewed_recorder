@@ -28,7 +28,7 @@
                     <p><input type="radio" name="filter" value="assess" <%if @filter == "assess" then%>checked<%end%>/>評価</p>
                 </div>
                 <div class="filter_keyword">
-                    <p>キーワード：<input type="text" name="keyword" <%if @keyword then%>value=<%=@keyword%><%end%> required></p>
+                    <p>キーワード：<input type="text" name="keyword" <%if @keyword then%>value="<%=@keyword%>"<%end%> required></p>
                 </div>
                 <input type="submit" value="適用">
             </div>
@@ -43,8 +43,8 @@
                 <p><%=post.site%></p>
                 <div class="evaluation">
                     <% for i in 1..5 do %>
-                        <input id=<%="star" + i.to_s%> type="radio" name=<%= post.id.to_s %> <% if (5-i+1)==post.assess then%>checked="checked"<% end %> value=<%=(5-i+1).to_s%> disabled/>
-                        <label for=<%="star" + i.to_s%>><span class="text"></span>★</label>
+                        <input id="<%="star" + i.to_s%>" type="radio" name="<%= post.id.to_s %>" <% if (5-i+1)==post.assess then%>checked="checked"<% end %> value=<%=(5-i+1).to_s%> disabled/>
+                        <label for="<%="star" + i.to_s%>"><span class="text"></span>★</label>
                     <% end %>
                 </div>
                 <p class="datetime"><%=post.datetime.strftime("%Y年%m月%d日%H時%M分")%></p>

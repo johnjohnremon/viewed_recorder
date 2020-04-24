@@ -1,15 +1,17 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all
+    @column_names = @posts.column_names
     @sort = "datetime"
     @order = "desc"
-    if params[:sort] && params[:order] then
+    if @column_names.include?(params[:sort]) && (params[:order] == "asc" || params[:order] == "desc") then
       @sort = params[:sort]
       @order = params[:order]
     end
 
-    @posts = Post.all.order("#{@sort} #{@order}")
+    @posts = @posts.all.order("#{@sort} #{@order}")
 
-    if params[:filter] && params[:keyword] then
+    if @column_names.include?(params[:filter]) && params[:keyword] then
       @filter = params[:filter]
       @keyword = params[:keyword]
       if params[:filter] == "assess" && @keyword =~ /^[0-9]+$/ then
