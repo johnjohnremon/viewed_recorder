@@ -5,25 +5,30 @@ class PostsController < ApplicationController
     @sort = "datetime"
     @order = "desc"
 
-    template_order = '%<sort>s %<order>s'
-    template_filter = '%<filter>s = ?'
-
     if @column_names.include?(params[:sort]) && (params[:order] == "asc" || params[:order] == "desc") then
       @sort = params[:sort]
       @order = params[:order]
     end
 
-    @posts = @posts.all.order(template_order % {sort: @sort, order: @order})
+    if @order == "desc" then
+      @posts = @posts.all.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)} desc")
+    else
+      @posts = @posts.all.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)}")
+    end
 
-    if @column_names.include?(params[:filter]) && params[:keyword] then
+    if @column_names.include?(params[:filter]) && params[:keyword] && 1 == 2 then
       @filter = params[:filter]
       @keyword = params[:keyword]
       if params[:filter] == "assess" && @keyword =~ /^[0-9]+$/ then
-        @posts = Post.where(template_filter % {filter: @filter}, @keyword.to_i)
+        @posts = Post.where("#{ActiveRecord::Base.connection.quote_column_name(@filter)} = ?", @keyword.to_i)
       else
-        @posts = Post.where(template_filter % {filter: @filter}, @keyword)
+        @posts = Post.where("#{ActiveRecord::Base.connection.quote_column_name(@filter)} = ?", @keyword)
       end
-      @posts = @posts.order(template_order % {sort: @sort, order: @order})
+      if @order == "desc" then
+        @posts = @posts.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)} desc")
+      else
+        @posts = @posts.all.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)}")
+      end
     end
     
   end
