@@ -4,22 +4,26 @@ class PostsController < ApplicationController
     @column_names = @posts.column_names
     @sort = "datetime"
     @order = "desc"
+
+    template_order = '%<sort>s %<order>s'
+    template_filter = '%<filter>s = ?'
+
     if @column_names.include?(params[:sort]) && (params[:order] == "asc" || params[:order] == "desc") then
       @sort = params[:sort]
       @order = params[:order]
     end
 
-    @posts = @posts.all.order("#{@sort} #{@order}")
+    @posts = @posts.all.order(template_order % {sort: @sort, order: @order})
 
     if @column_names.include?(params[:filter]) && params[:keyword] then
       @filter = params[:filter]
       @keyword = params[:keyword]
       if params[:filter] == "assess" && @keyword =~ /^[0-9]+$/ then
-        @posts = Post.where("#{@filter} = ?", @keyword.to_i)
+        @posts = Post.where(template_filter % {filter: @filter}, @keyword.to_i)
       else
-        @posts = Post.where("#{@filter} = ?", @keyword)
+        @posts = Post.where(template_filter % {filter: @filter}, @keyword)
       end
-      @posts = @posts.order("#{@sort} #{@order}")
+      @posts = @posts.order(template_order % {sort: @sort, order: @order})
     end
     
   end
