@@ -39,8 +39,8 @@
     <% @posts.each do |post| %>
         <div class="posts-index-item">
             <%= link_to "#{post.id}", class:"card" do %>
-                <h4><%=post.title%></h4>
-                <p><%=post.site%></p>
+                <h4 class="title_for_test"><%=post.title%></h4>
+                <p class="site_for_test"><%=post.site%></p>
                 <div class="evaluation">
                     <% for i in 1..5 do %>
                         <input id="<%="star" + i.to_s%>" type="radio" name="<%= post.id.to_s %>" <% if (5-i+1)==post.assess then%>checked="checked"<% end %> value=<%=(5-i+1).to_s%> disabled/>

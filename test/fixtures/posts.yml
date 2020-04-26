@@ -3,8 +3,18 @@
 one:
   title: MyTitle
   datetime: 2000-01-01 00:00:00
+  site: MyPlace
+  assess: 4
 
 two:
   title: MyTitle
   datetime: 2020-01-01 00:00:00
+  site: hoge
+  assess: 3
+
+three:
+  title: hoge
+  datetime: 2020-01-01 00:00:00
+  site: MyPlace
+  assess: 4
 
