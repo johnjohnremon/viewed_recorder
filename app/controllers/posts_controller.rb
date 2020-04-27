@@ -25,7 +25,7 @@ class PostsController < ApplicationController
         @posts = Post.where("#{ActiveRecord::Base.connection.quote_column_name(@filter)} = ?", @keyword)
       end
       if @order == "desc" then
-        @posts = @posts.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)} desc")
+        @posts = @posts.all.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)} desc")
       else
         @posts = @posts.all.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)}")
       end
