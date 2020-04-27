@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       @posts = @posts.all.order("#{ActiveRecord::Base.connection.quote_column_name(@sort)}")
     end
 
-    if @column_names.include?(params[:filter]) && params[:keyword] && 1 == 2 then
+    if @column_names.include?(params[:filter]) && params[:keyword] then
       @filter = params[:filter]
       @keyword = params[:keyword]
       if params[:filter] == "assess" && @keyword =~ /^[0-9]+$/ then
